@@ -47,6 +47,7 @@ ul.posts li {
     padding: 0; 
     margin: 0;  
     width: 25%;
+    white-space: nowrap;
 }
 
 td{
