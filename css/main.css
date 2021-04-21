@@ -44,6 +44,14 @@ ul.posts li {
   object-fit: contain; 
 }
 
+.sideL{
+  float: left;
+  padding: 2rem;
+}
+.sider{
+  float: right;
+  padding: 2rem;
+}
 
 .simple-container {
   max-width: 675px;
