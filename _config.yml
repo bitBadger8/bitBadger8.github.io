@@ -1,6 +1,5 @@
+remote_theme: "dracula/gh-pages"
 name: Kevin du Preez
 markdown: kramdown
 
 permalink: /blog/:year/:month/:day/:title
-
-remote_theme: "dracula/gh-pages"
