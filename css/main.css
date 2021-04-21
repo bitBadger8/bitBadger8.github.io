@@ -59,8 +59,9 @@ td{
 }
 .quickFacts{
   vertical-align: top; 
-  padding-left: 1rem;
+  padding-left: 4rem;
   text-align: left;
+  width: 30%;
 }
 
 
