@@ -46,9 +46,8 @@ ul.posts li {
 .imageCell{
     padding: 0; 
     margin: 0;  
+    width: 20%;
 }
-
-
 
 td{
   height: 18.75rem;
@@ -58,7 +57,16 @@ td{
   vertical-align: top; 
   padding-left: 1rem;
   text-align: left;
+  width: 70%;
 }
+.quickFacts{
+  vertical-align: top; 
+  padding-left: 1rem;
+  text-align: left;
+  width: 10%;
+}
+
+
 
 .simple-container {
   max-width: 675px;
