@@ -1,2 +1,4 @@
 name: Kevin du Preez
 markdown: kramdown
+
+permalink: /blog/:year/:month/:day/:title
