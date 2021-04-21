@@ -47,7 +47,9 @@ ul.posts li {
     margin: 0;  
     white-space: nowrap;
 }
-
+embed{
+ width:100%; 
+}
 td{
   height: 18.75rem;
    
