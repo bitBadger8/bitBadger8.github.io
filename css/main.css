@@ -46,7 +46,7 @@ ul.posts li {
 .imageCell{
     padding: 0; 
     margin: 0;  
-    width: 20%;
+    width: 40%;
 }
 
 td{
@@ -57,13 +57,13 @@ td{
   vertical-align: top; 
   padding-left: 1rem;
   text-align: left;
-  width: 70%;
+  width: 40%;
 }
 .quickFacts{
   vertical-align: top; 
   padding-left: 1rem;
   text-align: left;
-  width: 10%;
+  width: 20%;
 }
 
 
