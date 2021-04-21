@@ -43,6 +43,13 @@ ul.posts li {
   object-fit: contain; 
   width: auto;
 }
+.imageCell{
+    padding: 0; 
+    margin: 0;  
+}
+
+
+
 td{
   height: 18.75rem;
    
