@@ -47,14 +47,8 @@ td{
   height: 200px;
    
 }
-
-.sideL{
-  float: left;
-  padding: 2rem;
-}
-.sider{
-  float: right;
-  padding: 2rem;
+.welcomeContentBlock{
+  vertical-align: top; 
 }
 
 .simple-container {
