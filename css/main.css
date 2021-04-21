@@ -41,12 +41,10 @@ ul.posts li {
 #kevPic{
   height: 18.75rem;
   object-fit: contain; 
-  width: 12.5rem;
 }
 .imageCell{
     padding: 0; 
     margin: 0;  
-    width: 25%;
     white-space: nowrap;
 }
 
@@ -58,13 +56,11 @@ td{
   vertical-align: top; 
   padding-left: 1rem;
   text-align: left;
-  width: 45%;
 }
 .quickFacts{
   vertical-align: top; 
   padding-left: 1rem;
   text-align: left;
-  width: 30%;
 }
 
 
