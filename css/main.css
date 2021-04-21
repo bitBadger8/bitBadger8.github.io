@@ -43,6 +43,10 @@ ul.posts li {
   height: 300px;
   object-fit: contain; 
 }
+td{
+  height: 200px;
+   
+}
 
 .sideL{
   float: left;
