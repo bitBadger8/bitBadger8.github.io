@@ -51,6 +51,11 @@ embed{
  width:100%; 
  height: 40rem;
 }
+
+.homeIcon{
+ max-height: 10rem; 
+}
+
 td{
   height: 18.75rem;
    
