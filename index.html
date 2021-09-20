@@ -1,72 +1,98 @@
----
-layout: default
-title: Kevin du Preez, Personal Page
----
-<div class="blurb">
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-	<table style="width:100%">
-	  <tr>
-	    	<td class="imageCell" class="td-home"><img src="https://bitbadger8.github.io/assets/images/smallerProfile.jpg" alt="Photo of Kev" id="kevPic" /></td>
-	    	<td class="welcomeContentBlock">
-			<h1>Hi there, I'm Kevin du Preez!</h1>
-			<p>Read <a href="/about">more about me</a> if you like.</p>
-		</td>
-		<td class="quickFacts">
-			<h3 class="quickFactsH3">Quick Facts:</h3>
-			<ul>
-				<li>Currently Studying a <a href="https://www.up.ac.za/school-of-information-technology/article/34748/bit">B.IT</a> at the University of Pretoria </li>
-				<li>Currently doing <em>Artificial Intelligence, Networking, Software Engineering, Flutter</em></li>
-				<li>Current Employment: <a href="https://www.bitBadger.co.za">bitBadger Solutions</a> (a division of ISD)</li>
-			</ul>
-	    	</td>
-	  </tr>
-	</table>
-<!-- 	<div class="row">
-		<div class="column">
-	    		<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/android.svg" alt="Android"/>
-	  	</div>
-	  	<div class="column">
-	    		<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/apache-13.svg" alt="Apache"/>
-	  	</div>
-	  	<div class="column">
-	    		<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/bash-1.svg" alt="Bash"/>
-	  	</div>
-		<div class="column">
-	    		<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/c.svg" alt="C++"/>
-	  	</div>
-		<div class="column">
-	    		<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/css-5.svg" alt="CSS"/>
-	  	</div>
-		<div class="column">
-			<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/html5.svg" alt="HTML"/>
-	  	</div>
-		<div class="column">
-			<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/java-4.svg" alt="Java"/>
-	  	</div>
-	</div>
-	<div class="row">
-		<div class="column">
-			<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/logo-javascript.svg" alt="javascript"/>
-	  	</div>
-		<div class="column">
-			<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/jquery-1.svg" alt="jQuery"/>
-	  	</div>
-		<div class="column">
-			<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/linux-tux-1.svg" alt="Linux"/>
-	  	</div>
-		<div class="column">
-			<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/mysql-5.svg" alt="MySQL"/>
-	  	</div>
-		<div class="column">
-			<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/nodejs.svg" alt="Node.js"/>
-	  	</div>
-		<div class="column">
-			<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/php.svg" alt="php"/>
-	  	</div>
-		<div class="column">
-			<img class="homeIcon" src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="python"/>
-	  	</div>
-		
-	</div> -->
-	
-</div><!-- /.blurb -->
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="An application that will be for my personal site">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="personal_site">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <title>personal_site</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <script>
+    var serviceWorkerVersion = '2879157838';
+    var scriptLoaded = false;
+    function loadMainDartJs() {
+      if (scriptLoaded) {
+        return;
+      }
+      scriptLoaded = true;
+      var scriptTag = document.createElement('script');
+      scriptTag.src = 'main.dart.js';
+      scriptTag.type = 'application/javascript';
+      document.body.append(scriptTag);
+    }
+
+    if ('serviceWorker' in navigator) {
+      // Service workers are supported. Use them.
+      window.addEventListener('load', function () {
+        // Wait for registration to finish before dropping the <script> tag.
+        // Otherwise, the browser will load the script multiple times,
+        // potentially different versions.
+        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
+        navigator.serviceWorker.register(serviceWorkerUrl)
+          .then((reg) => {
+            function waitForActivation(serviceWorker) {
+              serviceWorker.addEventListener('statechange', () => {
+                if (serviceWorker.state == 'activated') {
+                  console.log('Installed new service worker.');
+                  loadMainDartJs();
+                }
+              });
+            }
+            if (!reg.active && (reg.installing || reg.waiting)) {
+              // No active web worker and we have installed or are installing
+              // one for the first time. Simply wait for it to activate.
+              waitForActivation(reg.installing ?? reg.waiting);
+            } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
+              // When the app updates the serviceWorkerVersion changes, so we
+              // need to ask the service worker to update.
+              console.log('New service worker available.');
+              reg.update();
+              waitForActivation(reg.installing);
+            } else {
+              // Existing service worker is still good.
+              console.log('Loading app from service worker.');
+              loadMainDartJs();
+            }
+          });
+
+        // If service worker doesn't succeed in a reasonable amount of time,
+        // fallback to plaint <script> tag.
+        setTimeout(() => {
+          if (!scriptLoaded) {
+            console.warn(
+              'Failed to load app from service worker. Falling back to plain <script> tag.',
+            );
+            loadMainDartJs();
+          }
+        }, 4000);
+      });
+    } else {
+      // Service workers not supported. Just drop the <script> tag.
+      loadMainDartJs();
+    }
+  </script>
+</body>
+</html>
