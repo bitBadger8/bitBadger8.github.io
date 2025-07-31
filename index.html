@@ -1,100 +1,531 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kevin du Preez</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Kevin du Preez" name="keywords" />
+    <meta content="Personal Site" name="description" />
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-  -->
-  <base href="/">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="An application that will be for my personal site">
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Lineicons CSS -->
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
 
-  <meta property="og:image" content="https://user-images.githubusercontent.com/41339070/135037310-33b5bd26-1f70-459b-808f-7593b101a4fd.png">
+    <script
+      src="https://kit.fontawesome.com/7cbc4b0a29.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="personal_site">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
 
-  <title>personal_site</title>
-  <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    var serviceWorkerVersion = '1840561668';
-    var scriptLoaded = false;
-    function loadMainDartJs() {
-      if (scriptLoaded) {
-        return;
-      }
-      scriptLoaded = true;
-      var scriptTag = document.createElement('script');
-      scriptTag.src = 'main.dart.js';
-      scriptTag.type = 'application/javascript';
-      document.body.append(scriptTag);
-    }
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
 
-    if ('serviceWorker' in navigator) {
-      // Service workers are supported. Use them.
-      window.addEventListener('load', function () {
-        // Wait for registration to finish before dropping the <script> tag.
-        // Otherwise, the browser will load the script multiple times,
-        // potentially different versions.
-        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
-        navigator.serviceWorker.register(serviceWorkerUrl)
-          .then((reg) => {
-            function waitForActivation(serviceWorker) {
-              serviceWorker.addEventListener('statechange', () => {
-                if (serviceWorker.state == 'activated') {
-                  console.log('Installed new service worker.');
-                  loadMainDartJs();
-                }
-              });
-            }
-            if (!reg.active && (reg.installing || reg.waiting)) {
-              // No active web worker and we have installed or are installing
-              // one for the first time. Simply wait for it to activate.
-              waitForActivation(reg.installing ?? reg.waiting);
-            } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
-              // When the app updates the serviceWorkerVersion changes, so we
-              // need to ask the service worker to update.
-              console.log('New service worker available.');
-              reg.update();
-              waitForActivation(reg.installing);
-            } else {
-              // Existing service worker is still good.
-              console.log('Loading app from service worker.');
-              loadMainDartJs();
-            }
-          });
+  <body data-spy="scroll" data-target=".navbar" data-offset="51">
+    <!-- Navbar Start -->
+    <nav
+      class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5"
+    >
+      <a href="index.html" class="navbar-brand ml-lg-3">
+        <h1 class="m-0 display-5">
+          <span class="text-primary">Kevin</span>duPreez
+        </h1>
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
+        <div class="navbar-nav m-auto py-0">
+          <a href="#home" class="nav-item nav-link active">Hello world</a>
+          <a href="#about" class="nav-item nav-link">About</a>
+          <a href="#qualification" class="nav-item nav-link"
+            >Education & Experience</a
+          >
+          <a href="#skill" class="nav-item nav-link">Skills</a>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
 
-        // If service worker doesn't succeed in a reasonable amount of time,
-        // fallback to plaint <script> tag.
-        setTimeout(() => {
-          if (!scriptLoaded) {
-            console.warn(
-              'Failed to load app from service worker. Falling back to plain <script> tag.',
-            );
-            loadMainDartJs();
-          }
-        }, 4000);
-      });
-    } else {
-      // Service workers not supported. Just drop the <script> tag.
-      loadMainDartJs();
-    }
-  </script>
-</body>
+    <!-- Header Start -->
+    <div
+      class="container-fluid bg-primary d-flex align-items-center mb-5 py-5"
+      id="home"
+      style="min-height: 100vh"
+    >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
+            <img
+              class="img-fluid w-100 rounded-circle shadow-sm"
+              src="img/profile.jpg"
+              alt=""
+            />
+          </div>
+          <div class="col-lg-7 text-center text-lg-left">
+            <h3 class="text-white font-weight-normal mb-3">Hello world, I'm</h3>
+            <h1
+              class="display-3 text-uppercase text-primary mb-2"
+              style="-webkit-text-stroke: 2px #00ff22"
+            >
+              Kevin du Preez
+            </h1>
+            <h1
+              class="typed-text-output d-inline font-weight-lighter text-green"
+            ></h1>
+            <div class="typed-text d-none">
+              Software Engineer;, Computer Scientist;, Adventurer;
+            </div>
+            <div
+              class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5"
+            >
+              <a
+                href="https://flowcv.com/resume/d6tul2j7vu"
+                target="_blank"
+                class="btn btn-outline-light mr-5"
+                >Download CV</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- About Start -->
+    <div class="container-fluid py-5" id="about">
+      <div class="container">
+        <div
+          class="position-relative d-flex align-items-center justify-content-center"
+        >
+          <h1
+            class="display-1 text-uppercase text-white"
+            style="-webkit-text-stroke: 1px #dee6df"
+          >
+            About
+          </h1>
+          <h1 class="position-absolute text-uppercase text-primary">
+            About Me
+          </h1>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-5 pb-4 pb-lg-0">
+            <img class="img-fluid rounded w-100" src="img/about.jpg" alt="" />
+          </div>
+          <div class="col-lg-7">
+            <h3 class="mb-4">Software Engineer</h3>
+            <p>
+              Overall, a nice guy with big ambitions to make the world a better
+              place. I enjoy challenges and being part of a team.
+            </p>
+            <div class="row mb-3">
+              <div class="col-sm-6 py-2">
+                <h6>
+                  Name: <span class="text-secondary">Kevin du Preez</span>
+                </h6>
+              </div>
+              <div class="col-sm-6 py-2">
+                <h6>
+                  Birthday: <span class="text-secondary">20 May 1999</span>
+                </h6>
+              </div>
+              <div class="col-sm-6 py-2">
+                <h6>
+                  Degree:
+                  <span class="text-secondary"
+                    >B.IT Computer Science Honors</span
+                  >
+                </h6>
+              </div>
+              <div class="col-sm-6 py-2">
+                <h6>
+                  Experience: <span class="text-secondary">almost 6 years</span>
+                </h6>
+              </div>
+              <div class="col-sm-6 py-2">
+                <h6>
+                  Phone: <span class="text-secondary">+21 21 286 1504</span>
+                </h6>
+              </div>
+              <div class="col-sm-6 py-2">
+                <h6>
+                  Email:
+                  <span class="text-secondary">kevindupreez8@gmail.com</span>
+                </h6>
+              </div>
+              <div class="col-sm-6 py-2">
+                <h6>
+                  Location:
+                  <span class="text-secondary"
+                    >Auckland, New Zealand</span
+                  >
+                </h6>
+              </div>
+              <div class="col-sm-6 py-2">
+                <h6>
+                  Fun Fact:
+                  <span class="text-secondary"
+                    >I tell dad jokes but I'm not a dad (yet).</span
+                  >
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Qualification Start -->
+    <div class="container-fluid py-5" id="qualification">
+      <div class="container">
+        <div
+          class="position-relative d-flex align-items-center justify-content-center"
+        >
+          <h1
+            class="display-1 text-uppercase text-white"
+            style="-webkit-text-stroke: 1px #dee2e6"
+          >
+            Qualification
+          </h1>
+          <h1 class="position-absolute text-uppercase text-primary">
+            Education & Experience
+          </h1>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h3 class="mb-4">My Education</h3>
+            <div class="border-left border-primary pt-2 pl-4 ml-2">
+              <div class="position-relative mb-4">
+                <i
+                  class="far fa-dot-circle text-primary position-absolute"
+                  style="top: 2px; left: -32px"
+                ></i>
+                <h5 class="font-weight-bold mb-1">
+                  B.IT - Computer Science Honors
+                </h5>
+                <p class="mb-2">
+                  <strong>University of Pretoria</strong> |
+                  <small>2018 - 2022</small>
+                </p>
+                <p>
+                  NQF Level 8 honors degree in Computer Science, Informatics,
+                  and Information Science with honors year in Computer Science.
+                </p>
+              </div>
+              <div class="position-relative mb-4">
+                <i
+                  class="far fa-dot-circle text-primary position-absolute"
+                  style="top: 2px; left: -32px"
+                ></i>
+                <h5 class="font-weight-bold mb-1">
+                  Jeppe High School for Boys
+                </h5>
+                <p class="mb-2">
+                  <!-- <strong>High School</strong> | -->
+                  <small>2013 - 2017</small>
+                </p>
+                <p>
+                  • Matriculated with Distinction in Information Technology.
+                  <br />• Head of Hostel: Tsessebe Boarding House. <br />•
+                  Nominated by peers for Head of School (Headboy). <br />•
+                  Captain of various sports teams (rugby, waterpolo, swimming,
+                  and athletics). <br />• RCL Representative: 2014, 2015, 2016.
+                  <br />• War Cry Leader. <br />• Temporary IT teacher. <br />•
+                  Accolades (scrolls) for Swimming and Academics.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h3 class="mb-4">My Experience</h3>
+            <div class="border-left border-primary pt-2 pl-4 ml-2">
+              <div class="position-relative mb-4">
+                <i
+                  class="far fa-dot-circle text-primary position-absolute"
+                  style="top: 2px; left: -32px"
+                ></i>
+                <h5 class="font-weight-bold mb-1">Software Engineer</h5>
+                <p class="mb-2">
+                  <strong>Rocket Lab</strong> | <small>2024 - present</small>
+                </p>
+                <p>
+                  • Full Agile lifecycle on company-wide software:<br />
+                      &nbsp;&nbsp;&nbsp;• Work Instruction System (Flint, FlameWiki, Forge)<br />
+                      &nbsp;&nbsp;&nbsp;• Manufacturing Execution System (Flame)<br />
+                      &nbsp;&nbsp;&nbsp;• Launch Procedures System (LaunchOps)<br />
+                  • Integration with ERP system (Infor LN).<br />
+                  • Support for all 3 systems.<br />
+                  • Deployment and CI/CD exposure for all 3 systems.<br />
+                  • Collaborate with other engineers and team members.<br />
+                  • Training & Mentoring new team members.<br />
+                  • Partial Team Lead responsibilities.<br />
+                </p>
+              </div>
+              <div class="position-relative mb-4">
+                <i
+                  class="far fa-dot-circle text-primary position-absolute"
+                  style="top: 2px; left: -32px"
+                ></i>
+                <h5 class="font-weight-bold mb-1">Software Engineer</h5>
+                <p class="mb-2">
+                  <strong>EPI-USE Labs</strong> | <small>2022 - 2024</small>
+                </p>
+                <p>
+                  • Analyze user needs and requirements.<br />
+                  • Design and develop software solutions (across numerous
+                  products).<br />
+                  • Implement and test software.<br />
+                  • Debug and correct defects.<br />
+                  • Collaborate with other engineers and team members.<br />
+                  • Provide support to clients (debug client systems).<br />
+                  • Full Agile project lifecycle.<br />
+                  • Training and mentoring new (graduate) team members.
+                </p>
+              </div>
+              <div class="position-relative mb-4">
+                <i
+                  class="far fa-dot-circle text-primary position-absolute"
+                  style="top: 2px; left: -32px"
+                ></i>
+                <h5 class="font-weight-bold mb-1">
+                  Backend Software Developer
+                </h5>
+                <p class="mb-2">
+                  <strong>NHC Hospital Group</strong> |
+                  <small>2020 - 2022</small>
+                </p>
+                <p>
+                  • Develop, implement, and maintain a backend system (Node.js)
+                  for hospital systems.<br />
+                  • Booking management, diabetes tracking, and more.
+                </p>
+              </div>
+              <div class="position-relative mb-4">
+                <i
+                  class="far fa-dot-circle text-primary position-absolute"
+                  style="top: 2px; left: -32px"
+                ></i>
+                <h5 class="font-weight-bold mb-1">Founder</h5>
+                <p class="mb-2">
+                  <strong>bitBadger Solutions</strong> |
+                  <small>2019 - 2022</small>
+                </p>
+                <p>
+                  • IT freelance development and support.<br />
+                  • Websites, CCTV, Corporate machine upgrades and backups.<br />
+                  • Laptop and workstation sales.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Qualification End -->
+
+    <!-- Skills Start -->
+    <div class="container-fluid pt-5" id="skill">
+      <div class="container">
+        <div
+          class="position-relative d-flex align-items-center justify-content-center"
+        >
+          <h1
+            class="display-1 text-uppercase text-white"
+            style="-webkit-text-stroke: 1px #dee2e6"
+          >
+            Skills
+          </h1>
+          <h1 class="position-absolute text-uppercase text-primary">
+            My Skills
+          </h1>
+        </div>
+        <div class="row pb-3">
+          <div class="col-lg-4 col-md-6 text-center mb-5">
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <i
+                class="fa fa-2x fa-code service-icon bg-primary text-white mr-3"
+              ></i>
+              <h4 class="font-weight-bold m-0">Languages & Frameworks</h4>
+            </div>
+            <p>
+              ABAP, Angular, Assembly, Bash, Bootstrap, CSS, Cypress.io, Dart, Flutter,
+              HTML5, Java, Javascript, JQuery, Kotlin, PHP, Python, SQL,
+              Solidity, Typescript, UI5, And more...
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 text-center mb-5">
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <i
+                class="fa fa-2x fa-code-branch service-icon bg-primary text-white mr-3"
+              ></i>
+              <h4 class="font-weight-bold m-0">
+                DevOps, Source Control, Task Tracking, and other related concepts
+              </h4>
+            </div>
+            <p>
+            Git<br/>
+            Docker<br/>
+            Kubernetes<br/>
+            Argo-CD<br/>
+            Jira<br/>
+            YouTrack<br/>
+            Redmine<br/>
+            Helm<br/>
+            Rancher<br/>
+            Grafana
+          </div>
+          <div class="col-lg-4 col-md-6 text-center mb-5">
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <i
+                class="fas fa-2x fa-terminal service-icon bg-primary text-white mr-3"
+              ></i>
+              <h4 class="font-weight-bold m-0">Hard Skills</h4>
+            </div>
+            <p>
+              Computer Science, Informatics, Information Science, Web
+              Development, Mobile Development, Multimedia, Networks (ISO/OSI),
+              Security, Netcentric Design, Hardware.
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 text-center mb-5">
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <i
+                class="fas fa-2x fa-solid fa-mug-hot service-icon bg-primary text-white mr-3"
+              ></i>
+              <h4 class="font-weight-bold m-0">Soft Skills</h4>
+            </div>
+            <p>
+              Teamwork & Leadership<br />
+              Problem Solving & Critical Thinking<br />
+              Professional<br />
+              Responsible<br />
+              Emotional Intelligence<br />
+              Time Management
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 text-center mb-5">
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <i
+                class="fas fa-2x fa-hiking service-icon bg-primary text-white mr-3"
+              ></i>
+              <h4 class="font-weight-bold m-0">Interests & Hobbies</h4>
+            </div>
+            <p>
+              Hiking<br />
+              Foosball (table soccer)<br />
+              Linux<br />
+              Space<br />
+              Braai and Beer<br />
+              Crypto, Blockchain<br />
+              Wildlife & Conservation<br />
+              DIY Projects, Mechanic work<br />
+              Cars, 4x4, F1, Motorcycles, MotoGP, Rally Racing<br />
+              Outdoor sports, Extreme Sports
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 text-center mb-5">
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <i
+                class="fas fa-2x fa-plus service-icon bg-primary text-white mr-3"
+              ></i>
+              <h4 class="font-weight-bold m-0">Other Skills</h4>
+            </div>
+            <p>
+              Level 1 basic first aid & life support<br />Celox® Academy: Using
+              a Haemostat<br />Global Phalanx: Stop the Bleed®
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Skills End -->
+
+    <!-- Footer Start -->
+    <div
+      class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5"
+    >
+      <div class="container text-center py-5">
+        <div class="d-flex justify-content-center mb-4">
+          <a
+            class="btn btn-light btn-social mr-2"
+            href="https://t.me/bit_Badger"
+            target="_blank"
+            ><i class="fab fa-telegram"></i
+          ></a>
+          <a
+            class="btn btn-light btn-social mr-2"
+            href="https://github.com/bitBadger8"
+            target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            class="btn btn-light btn-social mr-2"
+            href="https://www.linkedin.com/in/kevindupreez8/"
+            target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a
+            class="btn btn-light btn-social"
+            href="https://www.instagram.com/bit_badger"
+            target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+        <p class="m-0">
+          &copy;
+          <a class="text-white font-weight-bold" href="#">kdupreez.dev</a>. All
+          Rights Reserved.
+        </p>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Scroll to Bottom -->
+    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-dark px-0 back-to-top"
+      ><i class="fa fa-angle-double-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/typed/typed.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+  </body>
 </html>
